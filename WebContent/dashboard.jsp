@@ -1,3 +1,10 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="org.apache.catalina.Session" %>
+<%@page import="com.banque.model.Employe" %>
+
+
+	<%= session.getAttribute("employe");%>
+
 <!DOCTYPE html>
 <html>
 <head>

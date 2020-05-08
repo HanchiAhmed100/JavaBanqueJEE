@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/bootstrap/css/bootstrap.css" />
+   	<link rel="stylesheet" type="text/css" media="screen" href="./assets/uikit/css/uikit.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/materialize/css/materialize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.js"></script>
+    <script src="./assets/materialize/js/materialize.js"></script>
+    <script src="./assets/uikit/js/uikit.js"></script>
 </head>
-<body>
-	<h1>from tomcat server</h1>
-	<form action="Auth" method="POST">
-		<input type="text" name="firstname">
-		<input type="text" name="lastname">
-		<input type="submit">
-	</form>
+<body class="uk-background-muted">
+	<div class="container">
+		<div class="row">
+			<div class="uk-margin-large-top">
+				<div class="col-4 col-offset-4" >
+					<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid  uk-height-match="target: > div > .uk-match>">
+					    <div class="uk-card-media-left uk-cover-container uk-match>">
+					        <img src="./img/login.png" alt="" uk-cover>
+					        <canvas width="600" height="600"></canvas>
+					    </div>
+				        <div class="uk-card-body my-blue uk-match" >
+				            <h4 class="light uk-padding-top">Java Banque Version WEB</h4>
+						      <div class="row uk-margin-large-top">
+						        <div class="input-field col s12">
+						          <input id="email" type="text" class="validate">
+						          <label for="email">Email</label>
+						        </div>
+					        	<div class="input-field col s12">
+					         	 	<input id="password" type="password" class="validate">
+					          		<label for="password">Password</label>
+				       	 		</div>
+						      </div>
+						      <div class="uk-center">
+      						      <a class="waves-effect waves-light btn" onclick="submit()">Valider</a>			      
+						      </div>
+				        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
+<script>
+	function submit(){
+		var email = $('#email').val();
+		var password =  $('#password').val();
+		if(email != "" && password != ""){
+			$.post( "Auth", { email : email, password : password },
+			  	function(data, status){
+			    	alert("Data: " + data + "\nStatus: " + status);
+			    	if(data == ""){
+						UIkit.notification({message: 'Inccorecte', status: 'danger'})
+			    	}else{
+			    		window.location = "./dashboard.jsp";
+			    	}
+				}
+			);
+		}else{
+			UIkit.notification({message: 'Les champs sont obligatoire', status: 'danger'})
+		}
+		$('#email').val("");
+		$('#password').val("");
+	}
+
+</script>
 </html>
