@@ -25,3 +25,7 @@
 input, select, textarea{
     color: #fff;
 }
+.my-height{
+	height : 500px;
+	overflow-y: auto
+}

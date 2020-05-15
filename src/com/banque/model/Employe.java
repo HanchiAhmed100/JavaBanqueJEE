@@ -17,6 +17,9 @@ public class Employe {
 		this.mail = mail;
 		this.motdepasse = motdepasse;
 	}
+	public Employe() {
+		
+	}
 	public Employe(String nom, String pernom, String mail,String motdepasse) {
 		super();
 		this.id = UUID.randomUUID().toString(); 

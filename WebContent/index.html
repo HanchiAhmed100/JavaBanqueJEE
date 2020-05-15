@@ -16,8 +16,13 @@
     <script src="./assets/bootstrap/js/bootstrap.js"></script>
     <script src="./assets/materialize/js/materialize.js"></script>
     <script src="./assets/uikit/js/uikit.js"></script>
+    <style> 
+    	body{
+    		overflow : hidden
+    	}
+    </style>
 </head>
-<body class="uk-background-muted">
+<body class=" indigo lighten-5">
 	<div class="container">
 		<div class="row">
 			<div class="uk-margin-large-top">
@@ -40,7 +45,7 @@
 				       	 		</div>
 						      </div>
 						      <div class="uk-center">
-      						      <a class="waves-effect waves-light btn" onclick="submit()">Valider</a>			      
+      						      <a class="waves-effect waves-light btn teal lighten-3" onclick="submit()">Valider</a>			      
 						      </div>
 				        </div>
 					</div>
@@ -48,6 +53,14 @@
 			</div>
 		</div>
 	</div>
+	<br>
+     <footer class="page-footer  teal lighten-2">
+          <div class="footer-copyright">
+            <div class="container uk-text-center">
+            © 2020 Copyright Text | Made with love By Hanchi Ahmed
+            </div>
+          </div>
+     </footer>
 </body>
 
 <script>
@@ -57,16 +70,15 @@
 		if(email != "" && password != ""){
 			$.post( "Auth", { email : email, password : password },
 			  	function(data, status){
-			    	alert("Data: " + data + "\nStatus: " + status);
 			    	if(data == ""){
-						UIkit.notification({message: 'Inccorecte', status: 'danger'})
+						M.toast({html: 'Email ou mot de passe incorrecte ' , classes: 'rounded'})
 			    	}else{
 			    		window.location = "./dashboard.jsp";
 			    	}
 				}
 			);
 		}else{
-			UIkit.notification({message: 'Les champs sont obligatoire', status: 'danger'})
+			M.toast({html: 'Les champs sont obligatoire', classes: 'rounded'})
 		}
 		$('#email').val("");
 		$('#password').val("");
