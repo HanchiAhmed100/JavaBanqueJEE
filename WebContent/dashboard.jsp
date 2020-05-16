@@ -42,12 +42,11 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="./Compte.jsp">compte</a></li>        
           <li><a href="./Client.jsp">client</a></li>
-	        <li><a><%= ep.getNom() %> <%= ep.getPernom() %></a></li>
+	      <li><a><%= ep.getNom() %> <%= ep.getPernom() %></a></li>
         </ul>
       </div>
     </nav>
   </div>
-
 	<div class="container">
 		<div class="row uk-margin-large-top">
 			<div class="col-12">

@@ -48,6 +48,32 @@
     </nav>
   </div>
 
+
+	<div class="container">
+		<div class="row  uk-margin-large-top">
+			<p class="h4"> Ajouter compte </p><br />
+			Nom et prenom du client : <br />
+            <select id="client_liste" class="uk-select" onchange="Changed()">
+                <option>Option 01</option>
+                <option>Option 02</option>
+            </select>
+			<div class="row">
+		        <div class="input-field col s12" id="num_holder">
+		          <input disabled  id="disabled num_compte_hide" type="text" class="validate">
+		          <label for="disabled">Numero de compte</label>
+		        </div>
+		      </div>
+		      <div class="row">
+		        <div class="input-field col s12">
+		          <input type="number" id="solde" class="validate">
+		          <label for="first_name">Solde</label>
+		        </div>
+		        <div class="row">
+				    <button class="waves-effect waves-light btn" onclick="CreateCompte()">Valider</button> 			
+		        </div>
+	        </div>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row uk-margin-large-top">			
 			<div class="col-12">
@@ -81,15 +107,33 @@
 	<script>
 		
 		$(document).ready(function(){
+		
 			loadTable();
+
 		});
 
 		function loadTable(){
 			$( "#Compte_table" ).load( "./service/LoadCompteTable.jsp" );
-		}
-
-		function valider_transaction(){
+			$( "#client_liste" ).load( "./service/LoadClientSelect.jsp" );
+			$( "#num_compte_hide" ).hide();
 			
+		}
+		
+
+		function Changed(){
+			$( "#num_holder" ).load( "./service/LoadNumCompte.jsp" );			
+		}
+		function CreateCompte(){
+			var Client = $('#client_liste').val();
+			var numCompte = $('.numcompte').val();
+			var solde = $('#solde').val()
+
+			$.post( "CreateCompte", { Client : Client, numCompte : numCompte , solde : solde },function(data,status){
+				loadTable();
+				M.toast({html: 'Compte Ajouter' , classes: 'rounded'})
+				$('.numcompte').val("")
+				$('#solde').val("")
+			})
 		}
 	
 	</script>

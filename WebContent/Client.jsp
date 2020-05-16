@@ -49,6 +49,32 @@
   </div>
 
 	<div class="container">
+		<div class="row  uk-margin-large-top">
+			<p class="h4"> Ajouter Client </p><br />
+		      <div class="row">
+		        <div class="input-field col s6">
+		          <input type="text" id="nom" class="validate">
+		          <label for="first_name">Nom</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input type="text" id="prenom" class="validate">
+		          <label for="first_name">Prenom</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input type="number" id="tel" class="validate">
+		          <label for="first_name">Tel</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input type="text" id="adresse" class="validate">
+		          <label for="first_name">Adresse</label>
+		        </div>
+		        <div class="row">
+				    <button class="waves-effect waves-light btn" onclick="CreateClient()">Valider</button> 			
+		        </div>
+	        </div>
+		</div>
+	</div>
+	<div class="container">
 		<div class="row uk-margin-large-top">			
 			<div class="col-12">
 				<div class="card">
@@ -88,9 +114,21 @@
 			$( "#Client_table" ).load( "./service/LoadClientTable.jsp" );
 		}
 
-		function valider_transaction(){
-			
+		function CreateClient(){
+			var nom = $('#nom').val();
+			var prenom = $('#prenom').val();
+			var tel = $('#tel').val();
+			var adresse = $('#adresse').val();
+			$.post( "CreateClient", { nom : nom, prenom : prenom , tel : tel , adresse : adresse },function(data,status){
+				loadTable();
+				M.toast({html: 'Client'+ nom +' '+ prenom +' Ajouter' , classes: 'rounded'})
+				$('#nom').val("");
+				$('#prenom').val("");
+				$('#tel').val("");
+				$('#adresse').val("");
+			})
 		}
+
 	
 	</script>
 	
