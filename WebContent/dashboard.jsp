@@ -40,9 +40,10 @@
       <div class="nav-wrapper teal lighten-3">
         <a href="dashboard.jsp" class="brand-logo">JAVA Banque</a>
         <ul class="right hide-on-med-and-down">
+          <li><a href="./Employe.jsp">employe</a></li>            
           <li><a href="./Compte.jsp">compte</a></li>        
           <li><a href="./Client.jsp">client</a></li>
-	      <li><a><%= ep.getNom() %> <%= ep.getPernom() %></a></li>
+	        <li><a >Session au nom de <%= ep.getNom() %> <%= ep.getPernom() %></a></li>
         </ul>
       </div>
     </nav>
@@ -153,6 +154,7 @@
 	</div>
 
 </body>
+
 	<script>
 		
 
